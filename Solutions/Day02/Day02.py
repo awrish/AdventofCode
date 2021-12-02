@@ -15,16 +15,16 @@ def main():
             direction = splitter[0]
             change = int(splitter[1])
             if (direction == 'up'):
-               # vertical -= change
-                aim -= change #part 3
+               # vertical -= change #From Part 1
+                aim -= change #part 2
             elif direction == 'down':
                # vertical += change
                 aim += change
             elif direction == 'forward':
                 horizontal += change
-                vertical += aim * change #part3
+                vertical += aim * change #part2
 
-    #total = horizontal * vertical
+    #total = horizontal * vertical #From Part 1
     total = horizontal * vertical
     print('total: ', total)
 
