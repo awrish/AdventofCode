@@ -22,16 +22,37 @@ def part1():
     numPattern = r"\d{1,3},\d{1,3}"
 
     ans = 0
-    
+
     for match in matches:
         nums = re.findall(numPattern, match)
-        print(nums)
         for num in nums:
             num1, num2 = num.split(',')
             ans += int(num1) * int(num2)
             
         
     print(ans)
+
+    # should split into different functions for better readability
+    part2 = 0
+    newPattern = r"mul\(\d{1,3},\d{1,3}\)|do\(\)|don't\(\)"
+    newMatches = re.findall(newPattern, text)
+
+    flag = True
+    for match in newMatches:
+        if match == "don't()":
+            flag = False
+        elif match == "do()":
+            flag = True
+        else:
+            if flag == False:
+                continue
+            nums = re.findall(numPattern, match)
+            for num in nums:
+                num1, num2 = num.split(",")
+                part2 += int(num1) * int(num2)
+        
+    print(part2)
+
 
 
 def main():
